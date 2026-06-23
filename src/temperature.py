@@ -11,7 +11,7 @@ class Temperature:
     def __repr__(self) -> str:
         return f"Temperature({self.temperature})"
 
-    def classify(self) -> str:
+    def classify(self) -> np.ndarray|str:
         
         output = np.empty_like(self.temperature, dtype=object)
         output[self.temperature > 373] = "hot"
