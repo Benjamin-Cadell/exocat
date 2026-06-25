@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exocat"
+authors = [
+    {name = "Ben Cadell"},
+    {name = "Mélissa Azombo"},
+    {name = "Khang Nguyen"}
+]
+description = "Classifies exoplanet parameters using the TEPCat catalogue"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = ["tepcat", "classification"]
+license-files = ["LICENSE"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX"
+]
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "astropy",
+    "requests",
+    "pandas",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/Benjamin-Cadell/exocat"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["exocat*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "exocat.__version__"}
+
+
+# ... other project metadata fields as listed in:
+#     https://packaging.python.org/en/latest/guides/writing-pyproject-toml/

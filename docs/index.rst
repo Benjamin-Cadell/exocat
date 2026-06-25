@@ -16,7 +16,14 @@ The authors are:
 
 The code will classify known transiting exoplanets using the Transiting ExoPlanets Catalogue (TEPCat) using their studied parameters. As of 23/06/2026 the code is still in active development.
 
+User Guide
+----------
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
+
+   installation
+   tutorial
+   api
 

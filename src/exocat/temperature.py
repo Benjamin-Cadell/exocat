@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class Temperature:
+    """A class to represent and classify temperature values."""
 
     def __init__(self, temperature: float|np.ndarray):
         self.temperature = np.atleast_1d(np.asarray(temperature))
