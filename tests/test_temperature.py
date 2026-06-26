@@ -16,13 +16,13 @@ def test_init():
 def test_classify():
     # Test classification of a single temperature value
     temp = Temperature(300)
-    classification = temp.classify()
+    classification, labels = temp.classify()
     assert classification == "warm"
 
     # Test classification of an array of temperature values
     temp_array = np.array([250, 300, 400])
     temp = Temperature(temp_array)
-    classifications = temp.classify()
+    classifications, labels = temp.classify()
     expected_classifications = np.array(["cold", "warm", "hot"])
     assert np.array_equal(classifications, expected_classifications)
 
