@@ -52,6 +52,7 @@ class Plot:
         if clabels is not None:
             c = [clabels[label] for label in self.df[c]]
             norm = None
+            cmap = None
         else:
             cmap = plt.get_cmap(cmap)
             if cscale == "log":
