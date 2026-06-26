@@ -1,0 +1,4 @@
+pandas
+astropy
+numpy
+matplotlib
