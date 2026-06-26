@@ -50,7 +50,13 @@ class Plot:
         plt.figure(figsize=(10, 6))
 
         if clabels is not None:
-            c = [clabels[label] for label in self.df[c]]
+            colors = []
+            for label in self.df[c]:
+                try:
+                    colors.append(clabels[label])
+                except KeyError:
+                    colors.append('grey')
+            c = colors
             norm = None
             cmap = None
         else:
@@ -79,6 +85,7 @@ class Plot:
         else:
             for label, color in clabels.items():
                 plt.scatter([], [], c=color, label=label)
+            plt.scatter([], [], c="grey", label="Unknown")
             plt.legend()
         plt.xlabel(x)
         plt.ylabel(y)
