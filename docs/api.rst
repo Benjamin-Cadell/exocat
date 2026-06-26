@@ -9,3 +9,18 @@ EXOCat API
     :members:
     :undoc-members:
     :show-inheritance:
+
+.. autoclass:: exocat.BulkDensity
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. autoclass:: exocat.Mass
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. autoclass:: exocat.Plot
+    :members:
+    :undoc-members:
+    :show-inheritance:
