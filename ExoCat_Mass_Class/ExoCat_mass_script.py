@@ -58,40 +58,44 @@ jupiter_class_upper_limit = 14*M_Jup
 # * To not have crossover inbetween subclasses. Otherwise, these are all <= and will for now be coded as such
 
 
-class Mass:
-    def exo_mass_subclass(masses):
-        mass_classes = {mercury_class: []
-                        earth_class: []
-                        super_earth_subneptune_class: []
-                        neptune_class: []
-                        jupiter_class: []
-                        dwarf_class: []
-                        }  
 
-        for m_p in masses:
-            # Mercury class limit < 0.0007M_Jup
-            if m_p < mercury_class_limit:
-                mass_classes[mercury_class].append(m_p)
+def exo_mass_subclass(masses):
+    mass_classes = {mercury_class: []
+                    earth_class: []
+                    super_earth_subneptune_class: []
+                    neptune_class: []
+                    jupiter_class: []
+                    dwarf_class: []
+                    }  
 
-            # Earth class limit >= 0.0007M_Jup AND < 0.007M_Jup*
-            elif m_p >= mercury_class_upper_limit AND <= earth_class_upper_limit:
-                mass_classes[earth_class].append(m_p)
+    for m_p in masses:
+        # Mercury class limit < 0.0007M_Jup
+        if m_p < mercury_class_limit:
+            mass_classes[mercury_class].append(m_p)
 
-            # SuperEarth/ SubNeptune limit >= 0.007M_Jup AND < 0.07M_Jup*
-            elif m_p >= earth_class_upper_limit AND <= super_earth_subneptune_class_upper_limit:
-                mass_classes[super_earth_subneptune_class].append(m_p)
+        # Earth class limit >= 0.0007M_Jup AND < 0.007M_Jup*
+        elif m_p >= mercury_class_upper_limit AND <= earth_class_upper_limit:
+            mass_classes[earth_class].append(m_p)
 
-            # Neptune class limit >= 0.07M_Jup AND < 0.04M_Jup*
-            elif m_p >= super_earth_subneptune_class_upper_limit AND <= neptune_class_upper_limit:
-                mass_classes[neptune_class].append(m_p)
+        # SuperEarth/ SubNeptune limit >= 0.007M_Jup AND < 0.07M_Jup*
+        elif m_p >= earth_class_upper_limit AND <= super_earth_subneptune_class_upper_limit:
+            mass_classes[super_earth_subneptune_class].append(m_p)
 
-            # Jupiter class limit >= 0.04M_Jup AND <= 14M_Jup*
-            elif m_p >= neptune_class_upper_limit AND jupiter_class_upper_limit:
-                mass_classes[jupiter_class].append(m_p)
-            
-            # Dwarf class limit > 14M_Jup*
-            elif m_p > jupiter_class_upper_limit:
-                mass_classes[dwarf_class].append(m_p)
+        # Neptune class limit >= 0.07M_Jup AND < 0.04M_Jup*
+        elif m_p >= super_earth_subneptune_class_upper_limit AND <= neptune_class_upper_limit:
+            mass_classes[neptune_class].append(m_p)
+
+        # Jupiter class limit >= 0.04M_Jup AND <= 14M_Jup*
+        elif m_p >= neptune_class_upper_limit AND jupiter_class_upper_limit:
+            mass_classes[jupiter_class].append(m_p)
+        
+        # Dwarf class limit > 14M_Jup*
+        elif m_p > jupiter_class_upper_limit:
+            mass_classes[dwarf_class].append(m_p)
+    return mass_classes
+    for key, value in mass_classes.items():
+        if value == m_p:
+            return key
 
             
             
