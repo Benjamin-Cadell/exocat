@@ -1,28 +1,56 @@
-#%%
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 
 class Temperature:
     """A class to represent and classify temperature values."""
 
-    def __init__(self, temperature: float|np.ndarray):
-        self.temperature = np.atleast_1d(np.asarray(temperature))
+    def __init__(self, df: pd.DataFrame|np.ndarray|list) -> None:
+        """
+        Initialize the Temperature class with a DataFrame or an array of temperature values.
+        
+        Parameters
+        ----------
+        df : pd.DataFrame, np.ndarray, or list
+            A DataFrame containing a column named 'Teq' or an array/list of temperature values
+        """
+
+        if isinstance(df, pd.DataFrame):
+            self.df = df
+            self.temperature = np.atleast_1d(np.asarray(df["Teq"]))
+        else:
+            self.df = None
+            self.temperature = np.atleast_1d(np.asarray(df))
+        
         self.classifications = None
 
-    def __repr__(self) -> str:
-        return f"Temperature({self.temperature})"
-
     def classify(self) -> np.ndarray|str:
+        """
+        Classify the temperature values into categories: 'cold', 'warm', or 'hot'.
+
+        Returns
+        -------
+        np.ndarray or str
+            An array of classifications corresponding to the temperature values.
+        """
         
         output = np.empty_like(self.temperature, dtype=object)
         output[self.temperature > 373] = "hot"
         output[(self.temperature <= 373) & (self.temperature > 273)] = "warm"
         output[self.temperature <= 273] = "cold"
 
-        self.classifications = output.squeeze()
+        self.classifications = output
         return self.classifications
+    
+    def plot(self, bins:int=50) -> None:
+        """
+        Plot the distribution of temperature values with color-coded regions for 'cold', 'warm', and 'hot' categories.
 
-    def plot(self, bins=50):
+        Parameters
+        ----------
+        bins : int, optional
+            The number of bins to use for the histogram (default is 50).
+        """
 
         plt.figure(figsize=(10, 6))
         ax = plt.gca()
